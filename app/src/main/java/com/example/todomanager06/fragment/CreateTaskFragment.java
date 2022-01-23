@@ -1,26 +1,22 @@
 package com.example.todomanager06.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.navigation.Navigation;
 
+import com.example.todomanager06.App;
 import com.example.todomanager06.R;
 import com.example.todomanager06.databinding.FragmentCreateTaskBinding;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.example.todomanager06.model.TaskModel;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.Calendar;
@@ -31,6 +27,8 @@ public class CreateTaskFragment extends BottomSheetDialogFragment implements Dat
     private int startMonth;
     private int startDay;
 
+    private String date;
+    private String repeat;
 
 
     @Override
@@ -50,7 +48,8 @@ public class CreateTaskFragment extends BottomSheetDialogFragment implements Dat
         binding.applyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendText();
+                writeToDataBase();
+                dismiss();
             }
         });
         binding.chooseDateTv.setOnClickListener(new View.OnClickListener() {
@@ -67,15 +66,10 @@ public class CreateTaskFragment extends BottomSheetDialogFragment implements Dat
         });
     }
 
-    private void sendText() {
+    private void writeToDataBase() {
         String text = binding.taskEd.getText().toString();
-        if (text.isEmpty()) {
-            binding.taskEd.setError("Ошибка");
-        } else {
-            Bundle bundle = new Bundle();
-            bundle.putString("key", text);
-            Navigation.findNavController(requireView()).navigate(R.id.homeFragment, bundle);
-        }
+        TaskModel taskModel = new TaskModel(text, date, repeat);
+        App.getApp().getDb().taskDao().insert(taskModel);
     }
 
     private void showDatePickerDialog() {
@@ -88,7 +82,6 @@ public class CreateTaskFragment extends BottomSheetDialogFragment implements Dat
     }
 
     private void showRepeatDialog() {
-
         Dialog alertDialog = new Dialog(requireContext(), R.style.CustomBottomSheetDialogTheme);
         View view = LayoutInflater.from(getContext()).inflate(R.layout.repeat_dialog, requireView().findViewById(R.id.bottom_shit_con));
 
@@ -105,49 +98,63 @@ public class CreateTaskFragment extends BottomSheetDialogFragment implements Dat
         never.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.chooseRepeatTv.setText("Never");
+                String never = "Never";
+                binding.chooseRepeatTv.setText(never);
+                repeat = never;
                 alertDialog.dismiss();
-                }
+            }
         });
         everyDay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.chooseRepeatTv.setText("Every day");
+                String Every = "Every day";
+                binding.chooseRepeatTv.setText(Every);
+                repeat = Every;
                 alertDialog.dismiss();
             }
         });
         everyWeer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.chooseRepeatTv.setText("Every week");
+                String week = "Every week";
+                binding.chooseRepeatTv.setText(week);
+                repeat = week;
                 alertDialog.dismiss();
             }
         });
         everyMonth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.chooseRepeatTv.setText("Every month");
+                String month = "Every month";
+                binding.chooseRepeatTv.setText(month);
+                repeat = month;
                 alertDialog.dismiss();
             }
         });
         everyYear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.chooseRepeatTv.setText("Every year");
+                String year = "Every year";
+                binding.chooseRepeatTv.setText(year);
+                repeat = year;
                 alertDialog.dismiss();
             }
         });
         custom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.chooseRepeatTv.setText("Custom");
+                String custom = " Custom";
+                binding.chooseRepeatTv.setText(custom);
+                repeat = custom;
                 alertDialog.dismiss();
             }
         });
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+        date = "" + day + "." + month + 1 + "." + year;
         binding.chooseDateTv.setText("" + day + "." + month + 1 + "." + year);
     }
 }
