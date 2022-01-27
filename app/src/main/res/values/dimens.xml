@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_horizontal">15dp</dimen>
+    <dimen name="marginBottom">60dp</dimen>
+    <dimen name="marginEnd">60dp</dimen>
+    <dimen name="marginLeft">30dp</dimen>
+</resources>

@@ -20,4 +20,5 @@ public interface TaskDao {
 
     @Query("SELECT * FROM task_model")
     LiveData<List<TaskModel>> getData();
+
 }

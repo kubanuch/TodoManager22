@@ -1,5 +1,23 @@
 <resources>
     <string name="app_name">TodoManager06</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_to_productive_life">Welcome to productive life!</string>
+    <string name="collaboration_with_students">Collaboration with students</string>
+    <string name="skip">Skip</string>
+    <string name="you_have_an_account_already">You have an account already?</string>
+    <string name="sign_in">Sign in</string>
+    <string name="text">Text</string>
+    <string name="due_date">Due date</string>
+    <string name="_20_08_21">20.08.21</string>
+    <string name="repeat">Repeat</string>
+    <string name="every_week">Every week</string>
+    <string name="add_new_task">Add new task</string>
+    <string name="bask_to_task_list">Bask to task list</string>
+    <string name="repeat_task">Repeat task</string>
+    <string name="never">Never</string>
+    <string name="every_day">Every day</string>
+    <string name="every_month">Every month</string>
+    <string name="every_year">Every year</string>
+    <string name="custom">Custom</string>
+    <string name="cancel">Cancel</string>
 </resources>

@@ -8,90 +8,52 @@
 
     <TextView
         android:id="@+id/title_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Welcome to  productive life!"
-
-        android:textAlignment="center"
-        android:textSize="30sp"
+        style="@style/TextView"
         app:layout_constraintBottom_toTopOf="@id/description_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@android:color/black"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textStyle="bold" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/description_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/image_view"
+        style="@style/TextViewOne"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Collaboration with students"
+        android:layout_marginTop="22dp"
         app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@android:color/black"
         app:layout_constraintTop_toBottomOf="@id/title_tv" />
 
-    <ImageView
-        android:id="@+id/image_view"
-        android:layout_width="400dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="12dp"
-        android:src="@color/purple_500"
-        android:textSize="18sp"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_anim"
+        style="@style/LottieAnimationView"
         app:layout_constraintBottom_toTopOf="@id/skip_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/description_tv" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/skip_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:layout_marginHorizontal="15dp"
-        android:text="Skip"
+        style="@style/MaterialButton"
+        android:layout_marginHorizontal="23dp"
         android:layout_marginVertical="20dp"
-        android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@id/hint_tv"
-        android:elevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@+id/image_view"
-        android:textColor="@android:color/holo_blue_light"
-        app:icon="@drawable/ic_arrow_forward"
-        app:iconGravity="textEnd"
-        app:iconTint="@android:color/holo_blue_light" />
+        />
 
     <TextView
         android:id="@+id/hint_tv"
-        android:layout_margin="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="You have an account already?"
-        android:textAlignment="center"
-        android:layout_marginTop="10dp"
-        android:textSize="20sp"
+        style="@style/TextViewHint"
         app:layout_constraintBottom_toTopOf="@+id/sign_in_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@android:color/darker_gray" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/sign_in_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign in"
+        style="@style/TextViewHint"
+        android:text="@string/sign_in"
         android:layout_marginVertical="22dp"
-        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         android:textColor="@android:color/holo_blue_light" />
 

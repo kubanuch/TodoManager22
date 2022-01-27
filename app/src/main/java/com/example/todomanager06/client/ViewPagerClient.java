@@ -12,15 +12,15 @@ public class ViewPagerClient {
         pagerlist.add(new ViewPagerModel("Welcome " +
                 "to productive life!", "You can plan your time, add and organize" +
                 "tasks. Reminders so that you don't forget" +
-                "a thing - we take care of it. ", R.drawable.plan,"Skip"));
+                "a thing - we take care of it. ",R.raw.todo,"Skip"));
         pagerlist.add(new ViewPagerModel("Collaboration" +
                 "with students", "You can create a common study.schedule," +
                 "group tasks, manage them and communicate " +
-                "with other members.", R.drawable.asesmen,"Skip"));
+                "with other members.", R.raw.todo_anim,"Skip"));
         pagerlist.add(new ViewPagerModel("How to keep up" +
                 "with everything?", "You can track your productivity, see your results" +
                 "and progress. Also, this is a great opportunity" +
-                "to track how much time you spend studying! ", R.drawable.aut,"Get started"));
+                "to track how much time you spend studying! ", R.raw.todo_one,"Get started"));
         return pagerlist;
     }
 }

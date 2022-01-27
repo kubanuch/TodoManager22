@@ -11,6 +11,7 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/drawable/create_fragment_oval.xml" value="0.2703125" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/drawable/dialog_rounded.xml" value="0.2703125" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/drawable/gradient_beckgraund.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/drawable/ic_add.xml" value="0.2703125" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/drawable/ic_arrow_down.xml" value="0.2703125" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.25092592592592594" />
@@ -22,11 +23,11 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/drawable/rectangle_button_background.xml" value="0.2703125" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/drawable/rectangle_button_background2.xml" value="0.2703125" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/drawable/rectangle_button_background_create.xml" value="0.2703125" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/layout/activity_main.xml" value="0.12" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/layout/fragment_blank.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/layout/fragment_board.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/layout/fragment_board.xml" value="0.264" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/layout/fragment_create_task.xml" value="0.264" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/layout/fragment_home.xml" value="0.176" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/layout/fragment_home.xml" value="0.4" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/layout/fragment_main_board.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/layout/item_task.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/TodoManager/app/src/main/res/layout/repeat_dialog.xml" value="0.176" />

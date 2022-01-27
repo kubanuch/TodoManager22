@@ -1,10 +1,12 @@
 package com.example.todomanager06.boarding;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.todomanager06.databinding.FragmentBoardBinding;
@@ -48,8 +50,8 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.View
         public void onBind(ViewPagerModel model) {
             binding.titleTv.setText(model.getTitle());
             binding.descriptionTv.setText(model.getDescription());
-            binding.imageView.setImageResource(model.getImage());
             binding.skipBtn.setText(model.getSkip());
+            binding.lottieAnim.setAnimation(model.getImage());
             binding.skipBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
