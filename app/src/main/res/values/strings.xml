@@ -20,4 +20,13 @@
     <string name="every_year">Every year</string>
     <string name="custom">Custom</string>
     <string name="cancel">Cancel</string>
+    <string name="reach_your_goals_faster_and_keep_your_personal_and_proffesional_life_in_order">Reach your goals faster and keep your personal and proffesional life in order.</string>
+    <string name="welcome_aboard_adam">Welcome aboard, Adam!</string>
+    <string name="lifetrack">Lifetrack</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">confirm password</string>
+    <string name="code">Code</string>
+    <string name="number">Number</string>
+    <string name="send_phone_number">Send phone number</string>
+    <string name="submit_code">Submit Code</string>
 </resources>

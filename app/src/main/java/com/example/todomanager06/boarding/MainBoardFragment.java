@@ -57,7 +57,7 @@ public class MainBoardFragment extends Fragment  implements  ItemClickListener{
     @Override
     public void itemClick() {
         Navigation.findNavController(requireView()).navigate(R.id.homeFragment);
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("куба еблан соси хуй огромный", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
         sharedPreferences.edit().putBoolean("isShow",true).apply();
     }
 }
