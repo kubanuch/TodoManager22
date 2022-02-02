@@ -124,10 +124,20 @@ public class RegistrationFragment extends Fragment {
     @Override
     public void onStart() {
             super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
 
 
         }
     // [КОНЕЦ on_start_check_user]
+
+    private void verifyPhoneNumberWithCode(String verificationId, String code) {
+        // [НАЧАТЬ проверку с помощью кода]
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
+        // [ЗАВЕРШИТЬ проверку с помощью кода]
+        signInWithPhoneAuthCredential(credential);
+
+    }
 
 
     private void startPhoneNumberVerification(String phoneNumber) {
@@ -142,34 +152,27 @@ public class RegistrationFragment extends Fragment {
         // [КОНЕЦ start_phone_auth]
     }
 
-    private void verifyPhoneNumberWithCode(String verificationId, String code) {
-        // [НАЧАТЬ проверку с помощью кода]
-        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
-        // [ЗАВЕРШИТЬ проверку с помощью кода]
-        signInWithPhoneAuthCredential(credential);
-
-    }
-
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(requireActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onComplete(Task<AuthResult> task) {
-//                        FirebaseAuth mAuth;
-//                        mAuth = FirebaseAuth.getInstance();
-                        FirebaseUser currentUser = mAuth.getCurrentUser();
-                        if ( currentUser != null ) {
-                            Navigation.findNavController(requireView()).navigate(R.id.finishRegistrationFragment);
-                        }else if (!task.isSuccessful()) {
-                            Navigation.findNavController(requireView()).navigate(R.id.homeFragment);
-                            // Успешный вход, обновите пользовательский интерфейс с помощью информации о вошедшем пользователе
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithCredential:success");
-                            // Обновление пользовательского интерфейса
-                        }
 
+                            FirebaseUser user = task.getResult().getUser();
+                            Navigation.findNavController(requireView()).navigate(R.id.finishRegistrationFragment);
+                        } else {
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                            }
+                        }
                     }
                 });
     }
 
-}
+    private void updateUI(FirebaseUser user) {
 
+    }
+
+}
