@@ -10,8 +10,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.todomanager06.App;
+import com.example.todomanager06.R;
 import com.example.todomanager06.adapter.HomeAdapter;
 import com.example.todomanager06.databinding.FragmentHomeBinding;
 import com.example.todomanager06.model.TaskModel;
@@ -34,6 +36,7 @@ public class HomeFragment extends Fragment implements HomeAdapter.Listener {
         super.onViewCreated(view, savedInstanceState);
         initClickers();
         initAdapter();
+
     }
 
     private void initAdapter() {
@@ -49,6 +52,12 @@ public class HomeFragment extends Fragment implements HomeAdapter.Listener {
             public void onClick(View view) {
                 CreateTaskFragment createTaskFragment = new CreateTaskFragment();
                 createTaskFragment.show(requireActivity().getSupportFragmentManager(), "");
+            }
+        });
+        binding.profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(requireView()).navigate(R.id.profileFragment);
             }
         });
     }
@@ -67,4 +76,5 @@ public class HomeFragment extends Fragment implements HomeAdapter.Listener {
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
     }
+
 }

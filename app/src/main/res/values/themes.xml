@@ -31,7 +31,7 @@
     <style name="GradientButton">
         <item name="android:layout_width">186dp</item>
         <item name="android:layout_height">41dp</item>
-        <item name="android:text">Понял</item>
+        <item name="android:text"> профиль</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">18sp</item>
         <item name="android:background">@drawable/gradient_beckgraund</item>
@@ -43,11 +43,8 @@
         <item name="cardElevation">10dp</item>
     </style>
     <style name="FragmentContainerView">
-        <item name="android:name">androidx.navigation.fragment.NavHostFragment</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
-        <item name="defaultNavHost">true</item>
-        <item name="navGraph">@navigation/nav_graph</item>
     </style>
 
     <style name="TextView">

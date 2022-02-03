@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,9 +18,14 @@ import com.example.todomanager06.App;
 import com.example.todomanager06.R;
 import com.example.todomanager06.databinding.FragmentCreateTaskBinding;
 import com.example.todomanager06.model.TaskModel;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CreateTaskFragment extends BottomSheetDialogFragment implements DatePickerDialog.OnDateSetListener {
     FragmentCreateTaskBinding binding;
@@ -29,7 +35,7 @@ public class CreateTaskFragment extends BottomSheetDialogFragment implements Dat
 
     private String date;
     private String repeat;
-
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,10 +73,24 @@ public class CreateTaskFragment extends BottomSheetDialogFragment implements Dat
     }
 
     private void writeToDataBase() {
-        String text = binding.taskEd.getText().toString();
-        TaskModel taskModel = new TaskModel(text, date, repeat);
-        App.getApp().getDb().taskDao().insert(taskModel);
-    }
+                String task = binding.taskEd.getText().toString();
+                String date = binding.chooseDateTv.getText().toString();
+                String repeat = binding.chooseRepeatTv.getText().toString();
+                Map<String, String> user = new HashMap<>();
+                user.put("task", task);
+                user.put("date", date);
+                user.put("repeat", repeat);
+
+                db.collection("tasks").document(" Мой колендарь").set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+
+                    }
+                });
+
+            }
+
+
 
     private void showDatePickerDialog() {
         Calendar calendar = Calendar.getInstance();
@@ -150,11 +170,11 @@ public class CreateTaskFragment extends BottomSheetDialogFragment implements Dat
             }
         });
     }
-
     @SuppressLint("SetTextI18n")
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
         date = "" + day + "." + month + 1 + "." + year;
         binding.chooseDateTv.setText("" + day + "." + month + 1 + "." + year);
     }
+
 }
