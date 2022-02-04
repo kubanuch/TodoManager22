@@ -9,18 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.todomanager06.App;
 import com.example.todomanager06.R;
 import com.example.todomanager06.databinding.FragmentCreateTaskBinding;
-import com.example.todomanager06.model.TaskModel;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
@@ -73,25 +70,24 @@ public class CreateTaskFragment extends BottomSheetDialogFragment implements Dat
     }
 
     private void writeToDataBase() {
-                String task = binding.taskEd.getText().toString();
-                String date = binding.chooseDateTv.getText().toString();
-                String repeat = binding.chooseRepeatTv.getText().toString();
-                Map<String, String> user = new HashMap<>();
-                user.put("task", task);
-                user.put("date", date);
-                user.put("repeat", repeat);
+        String tasks = binding.taskEd.getText().toString();
+        String date = binding.chooseDateTv.getText().toString();
+        String repeat = binding.chooseRepeatTv.getText().toString();
+        Map<String, String> task = new HashMap<>();
+        task.put("task", tasks);
+        task.put("date", date);
+        task.put("repeat", repeat);
 
-                db.collection("tasks").document(" Мой колендарь").set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
 
-                    }
-                });
+        db.collection("task").add(task).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
 
             }
+        });
 
 
-
+    }
     private void showDatePickerDialog() {
         Calendar calendar = Calendar.getInstance();
         startYear = calendar.get(Calendar.YEAR);
