@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +20,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -73,16 +75,10 @@ public class CreateTaskFragment extends BottomSheetDialogFragment implements Dat
         String tasks = binding.taskEd.getText().toString();
         String date = binding.chooseDateTv.getText().toString();
         String repeat = binding.chooseRepeatTv.getText().toString();
-        Map<String, String> task = new HashMap<>();
-        task.put("task", tasks);
-        task.put("date", date);
-        task.put("repeat", repeat);
-
-
-        db.collection("task").add(task).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        Note note = new Note(tasks,date,repeat);
+        db.collection("Note").add(note).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
-
             }
         });
 
@@ -103,7 +99,6 @@ public class CreateTaskFragment extends BottomSheetDialogFragment implements Dat
 
         alertDialog.setContentView(view);
         alertDialog.show();
-
 
         RadioButton never = alertDialog.findViewById(R.id.never_radioBtn);
         RadioButton everyDay = alertDialog.findViewById(R.id.Every_day_btn);
